@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "584457763121",
+    "project_id": "storykitchen-af260",
+    "storage_bucket": "storykitchen-af260.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584457763121:android:544c4eff64fef774c8d810",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6CDIyS0Ymebyl_l1pFczQ3MbvWSvoIx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584457763121:android:58af0822b98327fec8d810",
+        "android_client_info": {
+          "package_name": "com.example.storykitchen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6CDIyS0Ymebyl_l1pFczQ3MbvWSvoIx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
