@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../services/auth_service.dart';
+import '../../providers/auth_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -26,11 +26,13 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formKey.currentState!.validate()) {
       setState(() => _isLoading = true);
       try {
-        await Provider.of<AuthService>(context, listen: false).loginWithEmail(
+        await context.read<AuthProvider>().loginWithEmail(
           _emailController.text.trim(),
           _passwordController.text.trim(),
         );
-        Navigator.pushReplacementNamed(context, '/home');
+        if (context.read<AuthProvider>().user != null) { // Check for non-null user after login
+          Navigator.pushReplacementNamed(context, '/home');
+        }
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(e.toString())),

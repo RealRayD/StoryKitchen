@@ -4,6 +4,8 @@ import 'dart:developer' as developer;
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  FirebaseAuth get auth => _auth;
+
   Future<bool> signUpWithEmail(String email, String password) async {
     try {
       // Log the attempt for debugging

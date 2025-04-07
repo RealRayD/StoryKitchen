@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../services/auth_service.dart';
+import '../../providers/auth_provider.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -34,15 +34,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
       }
 
       setState(() => _isLoading = true);
+
       try {
-        await Provider.of<AuthService>(context, listen: false).signUpWithEmail(
-          _emailController.text.trim(),
-          _passwordController.text.trim(),
-        );
-        Navigator.pushReplacementNamed(context, '/home');
+        final authProvider = Provider.of<AuthProvider>(context, listen: false);
+        bool success = await authProvider.signUpWithEmail(
+            _emailController.text.trim(), _passwordController.text.trim());
+
+        if (success && authProvider.user != null) {
+          Navigator.pushReplacementNamed(context, '/home');
+        } else {
+          throw 'Registration failed'; // Or handle more specific errors
+        }
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(e.toString())),
+          SnackBar(content: Text('Registration Failed: ${e.toString()}')),
         );
       } finally {
         setState(() => _isLoading = false);
